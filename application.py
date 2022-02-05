@@ -1,4 +1,5 @@
-from kanban_metrics import kanban 
+from kanban_metrics import kanban
+from pullrequest_metrics import pullRequest  
     
 '''---------------------------------------------------------------------------------------------------------User Interface start'''
 
@@ -18,30 +19,111 @@ def menu():
             print("----------------------------------")
             print("Choose an option: ")    
         elif choice =="2":
-            print("choice = 2")
+            pullRequestMetricMennu()
+            print("Main menu")
+            print("----------------------------------")
+            print("Choose an option: ")
             
         else:
             print("Option not avaible! please choose an available option")
-            print("1- KanBan metrics: ")
-            print("2- Pull request metrics: ")
 
 def makeChoice(message):
-    print(message)
-    print("1- yes")
-    print("2- no")  
-    choice = input()
+    
     done=False
     while done == False:
+        print(message)
+        print("1- yes")
+        print("2- no")  
+        choice = input()
         if choice =="1":
             return True
         elif choice =="2":
             return False      
         else:
             print("wrong entry , please choose an available option")
-            print(message)
-            print("1- yes")
-            print("1- no")   
             
+'''--------------------------------------------------------------------------------------------------------------------PR UI start'''
+           
+def pullRequestMetricMennu():   
+    loop = True
+    print("Pull Request metrics")
+    print("----------------------------------")
+    while loop:
+        print("Choose an option: ")
+        print("1- lead time for a pull request: ")
+        print("2- average lead Time for closed pull request: ")
+        print("3- average pull request merge time: ")
+        print("4- Pull request merge rate: ")
+        print("5- Pull request rejection rate: ")
+        print("0- return to the main menu: ")
+        choice = input()
+        if choice =="1":
+            singlePRLeadTime_UI()
+            print("Pull Request metrics")
+            print("----------------------------------")
+        elif choice == "2":
+            avgClosedPRLeadTime_UI()
+            print(" ")
+            print("Pull Request metrics")
+            print("----------------------------------")           
+        elif choice == "3":
+            avgMergePRLeadTime_UI()
+            print(" ")
+            print("Pull Request metrics")
+            print("----------------------------------")           
+        elif choice == "4":
+            prMergeRate_UI()
+            print(" ")
+            print("Pull Request metrics")
+            print("----------------------------------")
+        elif choice == "5":
+            prRejectionRate_UI()
+            print(" ")
+            print("Pull Request metrics")
+            print("----------------------------------")           
+        elif choice == "0":
+            loop = False         
+        else :
+            print("Option not avaible! Please chose a valid option.")
+            
+def singlePRLeadTime_UI():
+    done =False
+    pr_list = pullRequest.getPullResquestList("all")
+    while done ==False:
+        counter = 0
+        print("Which Pull Request's leadtime do you want to see: ")
+        for pr in pr_list:
+            print(str(counter)+" - "+pr["title"])
+            counter+=1 
+        choice = input()
+        if int(choice) >= len(pr_list):
+            print("option not avaible! please choose an available option")
+        else:
+            leadTime =pullRequest.getSinglePullRequestLeadtime(pr_list[int(choice)]["number"])
+            print(" - The leadtime for the pull request: "+pr_list[int(choice)]["title"]+" is "+leadTime)
+            
+            done = not makeChoice("Do you wish you see the lead time of another pull request? ")
+
+def avgMergePRLeadTime_UI():
+    avg = pullRequest.averageMergeTimeClosedPR()
+    if avg!= None:
+        print("the average merge time for merged Pull Request is "+str(avg)+" days")
+
+def avgClosedPRLeadTime_UI():
+    avg = pullRequest.averageLeadTimeClosedPR()
+    if avg!= None:
+        print("the average leadTime for closed Pull Request is "+str(avg)+" days")
+                    
+def prRejectionRate_UI():
+    rate = pullRequest.prRejectionRate()
+    if rate!= None:
+        print("Pull Request rejection rate is "+str(rate)+" %")
+        
+def prMergeRate_UI():
+    rate = pullRequest.prMergeRate()
+    if rate!= None:
+        print("Pull Request merging rate is "+str(rate)+" %")        
+'''----------------------------------------------------------------------------------------------------------PR UI end'''                           
 def kanbanMetricMenu():
     loop = True
     print("KanBan metrics")
@@ -49,42 +131,32 @@ def kanbanMetricMenu():
     while loop:
         print("Choose an option: ")
         print("1- lead Time for a task: ")
-        print("2- lead Time for tasks in a time interval: ")
+        print("2- lead Time for closed tasks in a time interval: ")
         print("3- view tasks in a specific column tasks: ")
-        print("4- list of tasks completed in a time interval: ")
+        print("4- list of completed tasks in a time interval: ")
         print("0- return to the main menu: ")
         choice = input()
         if choice =="1":
             singleTaskLeadTime_UI()
             print("KanBan metrics")
             print("----------------------------------")
-            pass
         elif choice == "2":
             leadTimeForTasksInTimeInterval_UI()
             print("KanBan metrics")
-            print("----------------------------------")
-            pass
+            print("----------------------------------")           
         elif choice == "3":
             taskInSpecificColumn_UI()
             print("KanBan metrics")
-            print("----------------------------------")
-            pass
+            print("----------------------------------")           
         elif choice == "4":
             completedTasksInTimeInterval_UI()
             print("KanBan metrics")
-            print("----------------------------------")
-            pass
+            print("----------------------------------")          
         elif choice == "0":
-            menu()
-            pass
+            menu()         
         else :
-            print("Option not avaible! Please chose a valid option between the following:")
-            print("1- lead Time for a task: ")
-            print("2- lead Time for tasks in a time interval: ")
-            print("3- view tasks in a specific column: ")
-            print("4- list of tasks completed in a time interval: ")
-            print("0- return to the main menu: ")
-            pass
+            print("Option not avaible! Please chose a valid option.")
+            
 
 def singleTaskLeadTime_UI():
     done =False

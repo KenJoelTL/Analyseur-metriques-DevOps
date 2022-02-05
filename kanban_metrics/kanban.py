@@ -108,7 +108,7 @@ def getKanBanTaskList():
     return tasks
 
 def getKanBanColumnList():
-    r =requests.get(url=config.baseUrl+"projects/"+str(config.kanban_id)+"/columns",headers=config.headers)
+    r =requests.get(url=config.baseUrl+"projects/"+str(config.project_id)+"/columns",headers=config.headers)
     columns=[]
     if r.status_code == 200:
         columns = r.json()
