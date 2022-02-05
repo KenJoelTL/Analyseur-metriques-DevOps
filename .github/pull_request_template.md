@@ -2,4 +2,4 @@
 _Provide overview
 
 ### Details
-Add more context to deescribe the changes
+Add more context to describe the changes
