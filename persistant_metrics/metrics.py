@@ -6,7 +6,7 @@ def getData(start_date, end_date):
     start_date = datetime.strptime(start_date, '%Y-%m-%d %H:%M')
     end_date = datetime.strptime(end_date, '%Y-%m-%d %H:%M')
     database = {}
-    f = open('../database.json')
+    f = open('./database.json')
     database = json.load(f)
     f.close()
     # print(database)

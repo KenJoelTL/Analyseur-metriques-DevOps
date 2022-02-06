@@ -52,24 +52,23 @@ def makeChoice(message):
             print("wrong entry , please choose an available option")
 
 
-
 def persistantKanbanMetric_UI():
     done = False
     while done == False:
-        print("Enter time intervals following the template (yyyy-mm-dd)")
-        print("start date(yyyy-mm-dd):")
+        print("Enter time intervals following the template (yyyy-mm-dd hh:mm)")
+        print("start date(yyyy-mm-dd hh:mm):")
         startDate = input()
-        print("end date(yyyy-mm-dd):")
+        print("end date(yyyy-mm-dd hh:mm):")
         endDate = input()
         tasks = metrics.getData(startDate, endDate)
         if len(tasks) > 0:
             print("Metrics  between "+startDate+" and "+endDate)
-            for task in tasks:
-                metrics.print_formatted_datase(task)
+            metrics.print_formatted_datase(tasks)
         else:
             print(" - no data")
         done = not makeChoice(
             "Do you wish you see the metrics between another time interval? ")
+
 
 '''--------------------------------------------------------------------------------------------------------------------PR UI start'''
 
