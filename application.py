@@ -1,5 +1,6 @@
 from kanban_metrics import kanban
 from pullrequest_metrics import pullRequest
+from persistant_metrics import metrics
 
 '''---------------------------------------------------------------------------------------------------------User Interface start'''
 
@@ -12,6 +13,7 @@ def menu():
     while True:
         print("1- KanBan metrics: ")
         print("2- Pull request metrics: ")
+        print("3- Persistant kanban metrics: ")
         print("please enter your selection: ")
         choice = input()
         if choice == "1":
@@ -21,6 +23,11 @@ def menu():
             print("Choose an option: ")
         elif choice == "2":
             pullRequestMetricMennu()
+            print("Main menu")
+            print("----------------------------------")
+            print("Choose an option: ")
+        elif choice == "3":
+            persistantKanbanMetric_UI()
             print("Main menu")
             print("----------------------------------")
             print("Choose an option: ")
@@ -44,6 +51,25 @@ def makeChoice(message):
         else:
             print("wrong entry , please choose an available option")
 
+
+
+def persistantKanbanMetric_UI():
+    done = False
+    while done == False:
+        print("Enter time intervals following the template (yyyy-mm-dd)")
+        print("start date(yyyy-mm-dd):")
+        startDate = input()
+        print("end date(yyyy-mm-dd):")
+        endDate = input()
+        tasks = metrics.getData(startDate, endDate)
+        if len(tasks) > 0:
+            print("Metrics  between "+startDate+" and "+endDate)
+            for task in tasks:
+                metrics.print_formatted_datase(task)
+        else:
+            print(" - no data")
+        done = not makeChoice(
+            "Do you wish you see the metrics between another time interval? ")
 
 '''--------------------------------------------------------------------------------------------------------------------PR UI start'''
 
