@@ -4,3 +4,5 @@ test
 
 ## PR METRICS - TEST - #1
 
+### Commande pour installer les modules utiliser dans le projet
+pip install -r requirements.txt
