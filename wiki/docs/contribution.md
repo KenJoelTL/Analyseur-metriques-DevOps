@@ -3,7 +3,7 @@
 Pour contribuer à ce projet, vous devez minimalement suivre les consignes indiquées plus bas. Prenez en compte que celles-ci peuvent être sujettes à changement.
 
 ## 🌳 Gestion des branches
-Ce projet suit une méthodologie git flow simplifié. Pour ajouter une fonctionnalité, il faut créer une branche à partir de la branche `develop` nommée feature/nom_du_feature. Pour être intégré vos changments au projet, il faut créer un pull request sur la branche `develop`. Seuls les pull request acceptés intégré à `develop` puis poussé sur le `master`.
+Ce projet suit une méthodologie git flow simplifié. Pour ajouter une fonctionnalité, il faut créer une branche à partir de la branche `develop` nommée feature/[nom-du-feature] ou bugfix/[nom-du-bug]. Pour être intégré vos changments au projet, il faut créer un pull request sur la branche `develop`. Seuls les pull request acceptés intégré à `develop` puis poussé sur le `master`.
 
 
 ## ⚡/🐞 Features and Bugs
@@ -26,13 +26,15 @@ Pour contribuer au projet et finalement intégrer vos modifications au code, vou
 
 **Tenez en compte que toutes les pull request doivent être revues avant d'être accepté.** 
 
-Assurez-vous de lier la pull request à un issue ou bien d'intégrer au message le lien vers le issues, par exemple:
+Assurez-vous de lier la pull request à un issue ou bien d'intégrer au message le lien vers le issues.
+
+Par exemple:
   
 ```md
   Ajout de lecture d'argument au script de remplissage
 
   **Détails**
-  Le scripte de remplissage prend maintenant des paramètres au démarrage du programme. 
+  Le script de remplissage prend maintenant des paramètres au démarrage du programme. 
   Par exemple, en faisant 
   
   [...]
@@ -40,6 +42,7 @@ Assurez-vous de lier la pull request à un issue ou bien d'intégrer au message 
   closes #[numéro du issue]
 
 ```
+
 
 #### **Création de pull request**
 Pour créer un pull request, assurez-vous d’avoir la version la plus à jour du code afin de causer le moins de conflits. Elles devront être attachées à un message suivant le gabarit.
