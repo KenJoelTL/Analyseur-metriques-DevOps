@@ -1,15 +1,15 @@
-# LOG680-tp01-eq08
+# Analyseur de métriques
 
 Cette application à pour but d'obtenir des métriques utiles à l'application de la méthodologie DevOps d'un projet utilisant GitHub.
 
-## Outils nécéssaires
+## ⚡ Outils nécéssaires
 - python 3.9
 
-## Installation des composantes
+## 🛠️ Installation des composantes
 ```sh
 pip install request
 ```
-## Démarrage de l'application
+## 💻 Démarrage de l'application
 ```sh
 # programme principal
 python application.py
@@ -17,5 +17,6 @@ python application.py
 # script de remplissage régulier du fichier de données
 python task-logger.py
 ```
-## En savoir plus
-[Lien vers le wiki](./wiki/docs.md)
+
+## 📚 En savoir plus
+[Lien vers le wiki](./wiki/index.md)

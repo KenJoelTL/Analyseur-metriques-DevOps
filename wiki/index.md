@@ -16,3 +16,5 @@ Ces métriques permettent de mesurer le travail réalisé par l'équipe.
 [Documentation API Pull-Request](./metriques/pull.md)
 
 
+## Contribuer au projet
+Pour contribuer au projet veuillez prendre en compte les informations [sur cette page](./docs/contribution.md).
