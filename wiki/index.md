@@ -1,7 +1,7 @@
-# Fonctionnement de l'application 
+# Wiki de l'analyseur de métrique
 
 ## Introduction
-Dans le but d’approfondir nos connaissances sur la philosophie DevOps, à l’aide de concept vu en classe, nous avons créé un programme console permettant d’obtenir des métriques sur le Kaban et sur les Pull-Request d’un projet utilisant GitHub.
+Dans le but de permettre aux équipes d’approfondir connaissances sur la philosophie DevOps, nous avons créé un programme console permettant d’obtenir des métriques sur le Kaban (project) et sur les Pull-Request d’un projet utilisant GitHub.
 
 
 ## Métriques Kanban

@@ -1,6 +1,6 @@
 
 # Contributions au projet
-Pour contribuer à ce projet.
+Pour contribuer à ce projet, vous devez minimalement suivre les consignes indiquées plus bas. Prenez en compte que celles-ci peuvent être sujettes à changement.
 
 # 🌳 Gestion des branches
 Ce projet suit une méthodologie git flow simplifié. Pour ajouter une fonctionnalité, il faut créer une branche à partir de la branche `develop` nommée feature/nom_du_feature. Pour être intégré vos changments au projet, il faut créer un pull request sur la branche `develop`. Seuls les pull request acceptés intégré à `develop` puis poussé sur le `master`.
@@ -17,7 +17,7 @@ Lorsqu’un issue est créé, qu’il agisse d’un feature ou d’un bug, il fa
 
 --- **Le template bug est utilisé pour les problèmes et les questions.**
 
-Les issues seront attachés à un milestone en plus d’être ajoutés automatiquement au Kanban (projet)
+Les issues seront attachés à un milestone en plus d’être ajoutés automatiquement au Kanban (project)
 
 
 
