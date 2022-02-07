@@ -6,6 +6,7 @@ Ces métriques nous donnent un aperçu du mouvement des tâches à réaliser par
 C’est le temps écoulé à l’apparition d’une tâche jusqu’au moment où elle est terminée. Cette métrique nous permet de comparer le temps estimé pour que la tâche soit terminée au temps réel qu’elle est terminée.
 
 ## 2. *Lead time* (delai) pour une *tâche* terminée dans une periode de temps donnée
+Cette métrique nous permet pour une periode donné d'avoir les delais (lead time) des tâches terminées
 
 ## 3. Nombre de tâches actives pour une colonne donnée
 Cette métrique nous permet de compter le nombre de tâches pour une colonne donnée. Par exemple, si l’on veut savoir le WIP (nbres de tâches en cours), il suffit de chercher le nombre de tâches qui existe pour la colonne *En Cours*.
