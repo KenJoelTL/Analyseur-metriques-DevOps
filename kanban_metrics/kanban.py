@@ -102,7 +102,7 @@ def getCompletedTasks(startDate, endDate):
 
 def getKanBanTaskList():
     r = requests.get(url=config.baseUrl+"projects/" +
-                     str(config.kanban_id)+"/columns", headers=config.headers)
+                     str(config.project_id)+"/columns", headers=config.headers)
     if r.status_code == 200:
         data = r.json()
         tasks = []
