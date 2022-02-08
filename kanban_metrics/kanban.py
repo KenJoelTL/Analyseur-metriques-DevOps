@@ -100,12 +100,13 @@ def getCompletedTasks(startDate, endDate):
 '''--------------------------------------------------------------------------------------main service calls end'''
 
 
-def getKanBanTaskList():
+def getKanBanTaskList(project_id):
     r = requests.get(url=config.baseUrl+"projects/" +
-                     str(config.project_id)+"/columns", headers=config.headers)
+                     str(project_id)+"/columns", headers=config.headers)
+    
+    tasks = []
     if r.status_code == 200:
         data = r.json()
-        tasks = []
         # print("cards")
         for columns in data:
             r = requests.get(url=columns["url"] +
@@ -122,9 +123,9 @@ def getKanBanTaskList():
     return tasks
 
 
-def getKanBanColumnList():
+def getKanBanColumnList(project_id):
     r = requests.get(url=config.baseUrl+"projects/" +
-                     str(config.project_id)+"/columns", headers=config.headers)
+                     str(project_id)+"/columns", headers=config.headers)
     columns = []
     if r.status_code == 200:
         columns = r.json()
