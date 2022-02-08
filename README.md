@@ -9,6 +9,15 @@ Cette application à pour but d'obtenir des métriques utiles à l'application d
 ```sh
 pip install request
 ```
+
+## ⚙ Configurations
+Avant de démarrer le programme, veuillez configurer les variables du fichier config
+```py
+baseUrl = 'https://api.github.com/' ## GitHub API
+repo_base_url = # repo's url
+headers= # {"authorization": "token [YOUR TOKEN]"}
+```
+
 ## 💻 Démarrage de l'application
 ```sh
 # programme principal
