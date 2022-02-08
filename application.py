@@ -1,9 +1,31 @@
 from kanban_metrics import kanban
 from pullrequest_metrics import pullRequest
 from persistant_metrics import metrics
+import config
+import requests
 
 '''---------------------------------------------------------------------------------------------------------User Interface start'''
 
+
+def PorjectList_UI():
+    done = False
+    project_list = getProjectList()
+    while done == False:
+        counter = 0
+        print("Which Project do you want to see: ")
+        for pr in project_list:
+            print(str(counter)+" - "+pr["name"])
+            counter += 1
+        choice = input()
+        if int(choice) >= len(project_list):
+            print("option not avaible! please choose an available option")
+        else:
+            print("project id set",project_list[int(choice)]["id"])
+            project_id = project_list[int(choice)]["id"]
+            done = True
+            kanbanMetricMenu(project_id)
+
+            
 
 def menu():
     print("Main menu")
@@ -17,7 +39,7 @@ def menu():
         print("please enter your selection: ")
         choice = input()
         if choice == "1":
-            kanbanMetricMenu()
+            PorjectList_UI()
             print("Main menu")
             print("----------------------------------")
             print("Choose an option: ")
@@ -34,6 +56,14 @@ def menu():
 
         else:
             print("Option not avaible! please choose an available option")
+            
+
+def getProjectList():
+  r = requests.get(url=config.repo_base_url+"projects", headers=config.headers)
+  project_list = []
+  if r.status_code == 200:
+    project_list = r.json()
+  return project_list   
 
 
 def makeChoice(message):
@@ -165,7 +195,7 @@ def prMergeRate_UI():
 '''----------------------------------------------------------------------------------------------------------PR UI end'''
 
 
-def kanbanMetricMenu():
+def kanbanMetricMenu(project_id):
     loop = True
     print("KanBan metrics")
     print("----------------------------------")
@@ -178,19 +208,19 @@ def kanbanMetricMenu():
         print("0- return to the main menu: ")
         choice = input()
         if choice == "1":
-            singleTaskLeadTime_UI()
+            singleTaskLeadTime_UI(project_id)
             print("KanBan metrics")
             print("----------------------------------")
         elif choice == "2":
-            leadTimeForTasksInTimeInterval_UI()
+            leadTimeForTasksInTimeInterval_UI(project_id)
             print("KanBan metrics")
             print("----------------------------------")
         elif choice == "3":
-            taskInSpecificColumn_UI()
+            taskInSpecificColumn_UI(project_id)
             print("KanBan metrics")
             print("----------------------------------")
         elif choice == "4":
-            completedTasksInTimeInterval_UI()
+            completedTasksInTimeInterval_UI(project_id)
             print("KanBan metrics")
             print("----------------------------------")
         elif choice == "0":
@@ -199,9 +229,9 @@ def kanbanMetricMenu():
             print("Option not avaible! Please chose a valid option.")
 
 
-def singleTaskLeadTime_UI():
+def singleTaskLeadTime_UI(project_id):
     done = False
-    tasks_list = kanban.getKanBanTaskList()
+    tasks_list = kanban.getKanBanTaskList(project_id)
     while done == False:
         counter = 0
         print("Which task's leadtime do you want to see: ")
@@ -221,9 +251,9 @@ def singleTaskLeadTime_UI():
                 "Do you wish you see the lead time of another task? ")
 
 
-def taskInSpecificColumn_UI():
+def taskInSpecificColumn_UI(project_id):
     done = False
-    column_list = kanban.getKanBanColumnList()
+    column_list = kanban.getKanBanColumnList(project_id)
     while done == False:
         counter = 0
         print("Which column task do you want to see: ")
